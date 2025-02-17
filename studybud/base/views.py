@@ -5,6 +5,7 @@ from .models import Room, Topic
 from .forms import RoomForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -60,6 +61,7 @@ def room(request, pk):
     room = Room.objects.get(id=pk)
     context = {'room':room}
     return render(request, 'base/room.html', context)
+
 
 def createRoom(request):
     form = RoomForm()
